@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "219732482853",
+    "firebase_url": "https://hndroid-26395.firebaseio.com",
+    "project_id": "hndroid-26395",
+    "storage_bucket": "hndroid-26395.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:219732482853:android:38a942ec2fe0cb55",
+        "android_client_info": {
+          "package_name": "io.tomislav.hndroid"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "219732482853-fnk7qda2j6u9bensnbgr26pdokvg5t4d.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "io.tomislav.hndroid",
+            "certificate_hash": "46740d0063852b74c603ce29d8489d701a1c151f"
+          }
+        },
+        {
+          "client_id": "219732482853-hdhs7agirhtjr9d2k5iei304gjrt07ms.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCf74ytUPEPYqASknW9bm_oU-_5Bf7yVqA"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "219732482853-hdhs7agirhtjr9d2k5iei304gjrt07ms.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
