@@ -6,7 +6,6 @@ import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.LongSparseArray;
-import android.widget.GridLayout;
 import android.widget.LinearLayout;
 
 import com.google.firebase.database.DataSnapshot;

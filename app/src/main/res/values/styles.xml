@@ -10,12 +10,16 @@
         <item name="android:textColorPrimary">@color/colorTextPrimary</item>
     </style>
 
-    <style name="storyTitleText">
+    <style name="storyItemContainer">
         <item name="android:paddingTop">@dimen/standardPadding</item>
+        <item name="android:paddingBottom">@dimen/standardPadding</item>
+        <item name="android:clickable">true</item>
+        <item name="android:background">?android:attr/selectableItemBackground</item>
+    </style>
+    <style name="storyTitleText">
         <item name="android:textColor">@color/colorTextPrimary</item>
     </style>
     <style name="storyUrlText">
-        <item name="android:paddingBottom">@dimen/standardPadding</item>
         <item name="android:ellipsize">end</item>
         <item name="android:singleLine">true</item>
         <item name="android:textColor">@color/colorTextSecondary</item>
