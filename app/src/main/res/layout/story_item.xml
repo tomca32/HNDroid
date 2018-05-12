@@ -1,11 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
     <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        tools:text="55"
+        android:id="@+id/story_score"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+    <TextView
         android:id="@+id/story_title"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toEndOf="@+id/story_score"
+        app:layout_constraintTop_toTopOf="@+id/story_score"
+        tools:text="Story Title" />
+    <TextView
+        android:id="@+id/story_url"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/story_title"
+        app:layout_constraintTop_toBottomOf="@id/story_title"
+        tools:text="www.example.com"/>
+    <TextView
+        android:id="@+id/story_comment_count"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:text="58"/>
 </android.support.constraint.ConstraintLayout>
