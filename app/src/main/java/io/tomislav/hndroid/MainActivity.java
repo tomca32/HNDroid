@@ -2,10 +2,12 @@ package io.tomislav.hndroid;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.util.LongSparseArray;
+import android.widget.GridLayout;
+import android.widget.LinearLayout;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -69,6 +71,7 @@ public class MainActivity extends AppCompatActivity {
             adapter = new StoriesAdapter(topStories, stories);
             recyclerView = findViewById(R.id.story_recycler);
             recyclerView.setLayoutManager(new LinearLayoutManager(this));
+            recyclerView.addItemDecoration(new DividerItemDecoration(this, LinearLayout.VERTICAL));
             recyclerView.setAdapter(adapter);
         }
     }
