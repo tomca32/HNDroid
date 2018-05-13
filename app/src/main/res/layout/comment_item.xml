@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools">
+    <TextView
+        android:id="@+id/comment_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:text="Your analogy is imperfect; for MSHTML and EdgeHTML are first-party, while Electron is third-party; and it’s not just MSHTML that Microsoft are pushing people away from, but the entire Win32 API—Microsoft’s been saying, use WinRT instead, and you can have EdgeHTML there. Notably, Microsoft has been steadily stepping back from this vision in the last few years, and EdgeHTML is expected to be exposed to Win32 apps at some point (the impression I have is that it is expected sooner rather than later).
+It’s a nuisance that it isn’t already there, but it is coming."/>
+</LinearLayout>

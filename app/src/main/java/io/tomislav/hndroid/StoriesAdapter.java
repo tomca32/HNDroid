@@ -1,36 +1,40 @@
 package io.tomislav.hndroid;
 
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
+import android.support.v4.util.LongSparseArray;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
-import android.util.LongSparseArray;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import org.parceler.Parcels;
+
 import java.util.List;
 
+import static io.tomislav.hndroid.CommentsActivity.STORY;
+
 public class StoriesAdapter extends RecyclerView.Adapter<StoriesAdapter.StoryViewHolder> {
-    private LongSparseArray<Story> stories;
+    private LongSparseArray<Item> stories;
     private List<Long> storyIds;
 
-    StoriesAdapter(List<Long> storyIds, LongSparseArray<Story> stories) {
+    StoriesAdapter(List<Long> storyIds, LongSparseArray<Item> stories) {
         this.storyIds = storyIds;
         this.stories = stories;
     }
 
     @Override
     public StoryViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View v =LayoutInflater.from(parent.getContext()).inflate(R.layout.story_item, parent, false);
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.story_item, parent, false);
         return new StoryViewHolder(v);
     }
 
     @Override
     public void onBindViewHolder(StoryViewHolder holder, int position) {
-        Story story = stories.get(storyIds.get(position));
-        holder.setStoryContents(story);
+        Item item = stories.get(storyIds.get(position));
+        holder.setStoryContents(item);
     }
 
     @Override
@@ -69,24 +73,38 @@ public class StoriesAdapter extends RecyclerView.Adapter<StoriesAdapter.StoryVie
             setTitle(itemView.getContext().getString(R.string.loading));
         }
 
-        void setStoryContents(Story story) {
-            if (story == null) {
+        private void openStoryInBrowser(View v, Item item) {
+            Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(item.getUrl()));
+            v.getContext().startActivity(browserIntent);
+        }
+
+        private void openComments(View v, Item item) {
+            Context context = v.getContext();
+            Intent commentsIntent = new Intent(context, CommentsActivity_.class);
+            commentsIntent.putExtra(STORY, Parcels.wrap(item));
+            context.startActivity(commentsIntent);
+        }
+
+        void setStoryContents(Item item) {
+            if (item == null) {
                 setStoryLoadingState();
             } else {
                 removeProgressBar();
-                setTitle(story.getTitle());
-                setScore(story.getScore());
-                setUrl(story.getUrl());
-                List<Long> children = story.getChildren();
+                setTitle(item.getTitle());
+                setScore(item.getScore());
+                setUrl(item.getUrl());
+                List<Long> children = item.getChildren();
                 if (children != null) {
                     setCommentCount(children.size());
                 }
                 itemView.setOnClickListener(v -> {
-                    if (story.getUrl() == null) return;
-
-                    Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(story.getUrl()));
-                    v.getContext().startActivity(browserIntent);
+                    if (item.getUrl() == null) {
+                        openComments(v, item);
+                    } else {
+                        openStoryInBrowser(v, item);
+                    }
                 });
+                itemView.findViewById(R.id.story_comment_count).setOnClickListener(v -> openComments(v, item));
             }
         }
     }

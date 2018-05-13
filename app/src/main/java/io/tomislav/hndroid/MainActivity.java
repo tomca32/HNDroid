@@ -1,11 +1,11 @@
 package io.tomislav.hndroid;
 
 import android.os.Bundle;
+import android.support.v4.util.LongSparseArray;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.LongSparseArray;
 import android.widget.LinearLayout;
 
 import com.google.firebase.database.DataSnapshot;
@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
     @Bean
     DatabaseInterface db;
     private List<Long> topStories;
-    private LongSparseArray<Story> stories = new LongSparseArray<>();
+    private LongSparseArray<Item> stories = new LongSparseArray<>();
     private StoriesAdapter adapter;
     private RecyclerView recyclerView;
 
@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
                     db.getItemRef(id).addValueEventListener(new ValueEventListener() {
                         @Override
                         public void onDataChange(DataSnapshot dataSnapshot) {
-                            stories.append(id, new Story((Map<String, Object>) dataSnapshot.getValue()));
+                            stories.append(id, new Item((Map<String, Object>) dataSnapshot.getValue()));
                             updateAdapter();
                         }
 

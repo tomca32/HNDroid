@@ -41,11 +41,17 @@
             app:layout_constraintTop_toBottomOf="@id/story_title"
             tools:text="www.example.com"/>
     </LinearLayout>
-    <TextView
-        android:id="@+id/story_comment_count"
-        android:layout_width="@dimen/storyNumberWidth"
-        android:layout_height="wrap_content"
-        style="@style/storyNumberText"
-        android:layout_gravity="center"
-        tools:text="58"/>
+    <FrameLayout
+        android:id="@+id/story_comment_container"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        style="@style/storyCommentContainer" >
+        <TextView
+            android:id="@+id/story_comment_count"
+            android:layout_width="@dimen/storyNumberWidth"
+            android:layout_height="wrap_content"
+            style="@style/storyNumberText"
+            android:layout_gravity="center"
+            tools:text="58"/>
+    </FrameLayout>
 </LinearLayout>
