@@ -7,6 +7,7 @@ import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.Html;
+import android.util.Log;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -57,6 +58,9 @@ public class CommentsActivity extends AppCompatActivity {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
                     Comment newComment = new Comment((Map<String, Object>) dataSnapshot.getValue());
+                    if (newComment.isDeleted()) {
+                        return;
+                    }
                     comments.append(newComment.getId(), newComment);
                     updateAdapter();
                 }
@@ -82,7 +86,7 @@ public class CommentsActivity extends AppCompatActivity {
     }
 
     private void initializeAdapter() {
-        adapter = new CommentsAdapter(comments);
+        adapter = new CommentsAdapter(story, comments);
         recyclerView = findViewById(R.id.comments_recycler);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.addItemDecoration(new DividerItemDecoration(this, LinearLayout.VERTICAL));

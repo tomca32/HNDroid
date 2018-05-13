@@ -6,14 +6,18 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.util.List;
+
 import io.tomislav.hndroid.Item;
 import io.tomislav.hndroid.R;
 
 public class StoriesAdapter extends RecyclerView.Adapter<StoryViewHolder> {
     private LongSparseArray<Item> stories;
+    private List<Long> storyOrder;
 
-    public StoriesAdapter(LongSparseArray<Item> stories) {
+    public StoriesAdapter(List<Long> storyOrder, LongSparseArray<Item> stories) {
         this.stories = stories;
+        this.storyOrder = storyOrder;
     }
 
     @Override
@@ -24,7 +28,7 @@ public class StoriesAdapter extends RecyclerView.Adapter<StoryViewHolder> {
 
     @Override
     public void onBindViewHolder(StoryViewHolder holder, int position) {
-        Item item = stories.valueAt(position);
+        Item item = stories.get(storyOrder.get(position));
         holder.setStoryContents(item);
     }
 
@@ -32,5 +36,4 @@ public class StoriesAdapter extends RecyclerView.Adapter<StoryViewHolder> {
     public int getItemCount() {
         return stories.size();
     }
-
 }

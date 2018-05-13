@@ -1,6 +1,8 @@
 package io.tomislav.hndroid.adapters;
 
 import android.support.v7.widget.RecyclerView;
+import android.text.Html;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
@@ -13,6 +15,9 @@ class CommentViewHolder extends RecyclerView.ViewHolder {
     }
 
     void setCommentContents(Comment comment) {
-        ((TextView) itemView.findViewById(R.id.comment_text)).setText(comment.getText());
+        if (comment.getText() == null) {
+            Log.d("COMMENT: ", comment.toString());
+        }
+        ((TextView) itemView.findViewById(R.id.comment_text)).setText(Html.fromHtml(comment.getText()));
     }
 }

@@ -69,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void initializeAdapter() {
         if (adapter == null) {
-            adapter = new StoriesAdapter(stories);
+            adapter = new StoriesAdapter(topStories, stories);
             recyclerView = findViewById(R.id.story_recycler);
             recyclerView.setLayoutManager(new LinearLayoutManager(this));
             recyclerView.addItemDecoration(new DividerItemDecoration(this, LinearLayout.VERTICAL));
