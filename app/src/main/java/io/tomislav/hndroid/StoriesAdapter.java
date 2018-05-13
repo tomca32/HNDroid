@@ -65,7 +65,7 @@ public class StoriesAdapter extends RecyclerView.Adapter<StoriesAdapter.StoryVie
             storyUrlTextView.setText(url == null ? "" : url);
         }
 
-        private void setCommentCount(int commentCount) {
+        private void setCommentCount(Long commentCount) {
             ((TextView) itemView.findViewById(R.id.story_comment_count)).setText(String.valueOf(commentCount));
         }
 
@@ -93,9 +93,9 @@ public class StoriesAdapter extends RecyclerView.Adapter<StoriesAdapter.StoryVie
                 setTitle(item.getTitle());
                 setScore(item.getScore());
                 setUrl(item.getUrl());
-                List<Long> children = item.getChildren();
-                if (children != null) {
-                    setCommentCount(children.size());
+                Long descendants = item.getDescendants();
+                if (descendants != null) {
+                    setCommentCount(descendants);
                 }
                 itemView.setOnClickListener(v -> {
                     if (item.getUrl() == null) {
