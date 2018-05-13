@@ -1,16 +1,18 @@
-package io.tomislav.hndroid;
+package io.tomislav.hndroid.adapters;
 
 import android.support.v4.util.LongSparseArray;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
-public class CommentsAdapter extends RecyclerView.Adapter<CommentsAdapter.CommentViewHolder> {
+import io.tomislav.hndroid.Comment;
+import io.tomislav.hndroid.R;
+
+public class CommentsAdapter extends RecyclerView.Adapter<CommentViewHolder> {
     private LongSparseArray<Comment> comments;
 
-    CommentsAdapter(LongSparseArray<Comment> comments) {
+    public CommentsAdapter(LongSparseArray<Comment> comments) {
         this.comments = comments;
     }
 
@@ -31,13 +33,4 @@ public class CommentsAdapter extends RecyclerView.Adapter<CommentsAdapter.Commen
         return comments.size();
     }
 
-    class CommentViewHolder extends RecyclerView.ViewHolder {
-        CommentViewHolder(View itemView) {
-            super(itemView);
-        }
-
-        void setCommentContents(Comment comment) {
-            ((TextView) itemView.findViewById(R.id.comment_text)).setText(comment.getText());
-        }
-    }
 }

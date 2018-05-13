@@ -18,6 +18,8 @@ import org.androidannotations.annotations.EActivity;
 import java.util.List;
 import java.util.Map;
 
+import io.tomislav.hndroid.adapters.StoriesAdapter;
+
 @EActivity
 public class MainActivity extends AppCompatActivity {
 
@@ -67,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void initializeAdapter() {
         if (adapter == null) {
-            adapter = new StoriesAdapter(topStories, stories);
+            adapter = new StoriesAdapter(stories);
             recyclerView = findViewById(R.id.story_recycler);
             recyclerView.setLayoutManager(new LinearLayoutManager(this));
             recyclerView.addItemDecoration(new DividerItemDecoration(this, LinearLayout.VERTICAL));
