@@ -42,13 +42,13 @@ class StoryViewHolder extends RecyclerView.ViewHolder {
     private void setCommentCount(Item item) {
         Long descendants = item.getDescendants();
         TextView commentCount = itemView.findViewById(R.id.story_comment_count);
-        Log.d("Comment count: ", String.valueOf(descendants));
+        View commentContainer = itemView.findViewById(R.id.story_comment_container);
         if (descendants != null) {
             commentCount.setText(String.valueOf(descendants));
-            commentCount.setOnClickListener(v -> openComments(v, item));
+            commentContainer.setOnClickListener(v -> openComments(v, item));
         } else {
             commentCount.setText("");
-            commentCount.setOnClickListener(null);
+            commentContainer.setOnClickListener(null);
         }
     }
 

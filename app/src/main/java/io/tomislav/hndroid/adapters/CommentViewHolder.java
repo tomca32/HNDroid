@@ -15,9 +15,7 @@ class CommentViewHolder extends RecyclerView.ViewHolder {
     }
 
     void setCommentContents(Comment comment) {
-        if (comment.getText() == null) {
-            Log.d("COMMENT: ", comment.toString());
-        }
+        ((TextView) itemView.findViewById(R.id.comment_author)).setText(comment.getAuthor());
         ((TextView) itemView.findViewById(R.id.comment_text)).setText(Html.fromHtml(comment.getText()));
     }
 }
